@@ -40,11 +40,11 @@ class DBManager:
     def get_companies_and_vacancies_count(self):
 
         sql_comm = 'SELECT employer_id, employer_name, COUNT(vacs_info.vac_id) AS num_vacs' \
-                   'FROM employer_info' \
-                   'LEFT JOIN vacs_info' \
-                   'ON employer_info.employer_id = vacs_info.vac_employer_id' \
-                   'GROUP BY employer_id, employer_name' \
-                   'ORDER BY num_vacs'
+                   'FROM employer_info ' \
+                   'LEFT JOIN vacs_info ' \
+                   'ON employer_info.employer_id = vacs_info.vac_employer_id ' \
+                   'GROUP BY employer_id, employer_name ' \
+                   'ORDER BY num_vacs '
 
         results = self.db_request(sql_comm)
 
