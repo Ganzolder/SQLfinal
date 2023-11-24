@@ -43,5 +43,3 @@ class DbUploader:
                         db_values.append(None)
 
             cursor.execute(sql_comm, db_values)
-
-

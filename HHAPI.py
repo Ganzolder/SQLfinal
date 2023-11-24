@@ -2,22 +2,21 @@ import requests
 
 
 class HhAPI:
-
     """
     Класс для подключения по API к HH.ru и получения нужных данных
     """
 
     def __init__(self):
         self.employers_monitoring_list = {'Бриз': 4647204,
-                               'WiseTech': 4187891,
-                               'delovoy.tech': 10017044,
-                               'sputnikfund.ru': 5560707,
-                               'postelka.ru': 1247819,
-                               'делу-время.рф': 2693346,
-                               'Scholastic Network': 3625115,
-                               'НОВАЯ ГОРНАЯ УК': 2688858,
-                               'ТОО Improvado KZ': 9574451,
-                               'kontinent.tomsk.ru': 1836747}
+                                          'WiseTech': 4187891,
+                                          'delovoy.tech': 10017044,
+                                          'sputnikfund.ru': 5560707,
+                                          'postelka.ru': 1247819,
+                                          'делу-время.рф': 2693346,
+                                          'Scholastic Network': 3625115,
+                                          'НОВАЯ ГОРНАЯ УК': 2688858,
+                                          'ТОО Improvado KZ': 9574451,
+                                          'kontinent.tomsk.ru': 1836747}
 
     def get_emps(self):
 
@@ -28,7 +27,6 @@ class HhAPI:
         emps_list = []
 
         for key, value in self.employers_monitoring_list.items():
-
             hh_request = requests.get(f'https://api.hh.ru/employers/{value}').json()
 
             emp_dict = {'employer_id': hh_request['id'],
@@ -48,7 +46,6 @@ class HhAPI:
         """
 
         vacs_list = []
-        vac_dict = {}
 
         for key, value in self.employers_monitoring_list.items():
 
@@ -72,8 +69,3 @@ class HhAPI:
                 vacs_list.append(vac_dict)
 
         return vacs_list
-
-
-
-
-

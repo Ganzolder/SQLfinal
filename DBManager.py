@@ -39,12 +39,12 @@ class DBManager:
 
     def get_companies_and_vacancies_count(self):
 
-        sql_comm = f'SELECT employer_id, employer_name, COUNT(vacs_info.vac_id) AS num_vacs' \
-                   f' FROM employer_info' \
-                   f' LEFT JOIN vacs_info' \
-                   f' ON employer_info.employer_id = vacs_info.vac_employer_id' \
-                   f' GROUP BY employer_id, employer_name' \
-                   f' ORDER BY num_vacs'
+        sql_comm = 'SELECT employer_id, employer_name, COUNT(vacs_info.vac_id) AS num_vacs' \
+                   'FROM employer_info' \
+                   'LEFT JOIN vacs_info' \
+                   'ON employer_info.employer_id = vacs_info.vac_employer_id' \
+                   'GROUP BY employer_id, employer_name' \
+                   'ORDER BY num_vacs'
 
         results = self.db_request(sql_comm)
 
@@ -52,9 +52,9 @@ class DBManager:
 
     def get_all_vacancies(self):
 
-        sql_comm = f'SELECT vac_name, employer_name, salary_from, salary_to, vacs_url ' \
-                   f'FROM employer_info ' \
-                   f'LEFT JOIN vacs_info ON employer_info.employer_id = vacs_info.vac_employer_id'
+        sql_comm = 'SELECT vac_name, employer_name, salary_from, salary_to, vacs_url ' \
+                   'FROM employer_info ' \
+                   'LEFT JOIN vacs_info ON employer_info.employer_id = vacs_info.vac_employer_id'
 
         results = self.db_request(sql_comm)
 
@@ -62,7 +62,7 @@ class DBManager:
 
     def get_avg_salary(self):
 
-        sql_comm = f'SELECT AVG(salary_from), AVG(salary_to) FROM vacs_info'
+        sql_comm = 'SELECT AVG(salary_from), AVG(salary_to) FROM vacs_info'
 
         results = self.db_request(sql_comm)
 
@@ -70,10 +70,10 @@ class DBManager:
 
     def get_vacancies_with_higher_salary(self):
 
-        sql_comm = f'SELECT * FROM vacs_info ' \
-                   f'WHERE salary_from > (' \
-                   f'SELECT AVG(salary_from + salary_to) ' \
-                   f'FROM vacs_info)'
+        sql_comm = 'SELECT * FROM vacs_info ' \
+                   'WHERE salary_from > (' \
+                   'SELECT AVG(salary_from + salary_to) ' \
+                   'FROM vacs_info)'
 
         results = self.db_request(sql_comm)
 
@@ -86,6 +86,3 @@ class DBManager:
         results = self.db_request(sql_comm)
 
         return results
-
-
-
