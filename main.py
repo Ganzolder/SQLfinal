@@ -14,6 +14,9 @@ db_uploader.upload_data('employer_info', emp_list)
 db_uploader.upload_data('vacs_info', vac_list)
 
 if __name__ == '__main__':
+
+    # Код основного запуска
+
     print('Добро пожловать в менеджер сборщик вакансий вакансий!'
           'Я уже обновил вакансии в базе по следующим компаниям:\n'
           'Бриз, WiseTech, delovoy.tech, sputnikfund.ru, postelka.ru, делу-время.рф, Scholastic Network, '

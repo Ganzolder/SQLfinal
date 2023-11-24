@@ -2,6 +2,11 @@ import psycopg2
 
 
 def create_db():
+
+    """
+    Функция создания базы данных
+    """
+
     conn = psycopg2.connect(
         host='localhost',
         database='postgres',
@@ -29,6 +34,10 @@ def create_db():
 
 
 def create_tbls():
+    """
+    Функция создания базы таблиц базы данных
+    """
+
     conn = psycopg2.connect(
         host='localhost',
         database='HH.ru',

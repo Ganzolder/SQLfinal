@@ -39,6 +39,10 @@ class DBManager:
 
     def get_companies_and_vacancies_count(self):
 
+        """
+        Функция выдачи количества вакансий у каждой компании
+        """
+
         sql_comm = 'SELECT employer_id, employer_name, COUNT(vacs_info.vac_id) AS num_vacs' \
                    'FROM employer_info ' \
                    'LEFT JOIN vacs_info ' \
@@ -52,6 +56,10 @@ class DBManager:
 
     def get_all_vacancies(self):
 
+        """
+        Функция выдачи всех вакансий
+        """
+
         sql_comm = 'SELECT vac_name, employer_name, salary_from, salary_to, vacs_url ' \
                    'FROM employer_info ' \
                    'LEFT JOIN vacs_info ON employer_info.employer_id = vacs_info.vac_employer_id'
@@ -62,6 +70,10 @@ class DBManager:
 
     def get_avg_salary(self):
 
+        """
+        Фанкция выдачи средней заработной платы по всем вакансиям в базе
+        """
+
         sql_comm = 'SELECT AVG(salary_from), AVG(salary_to) FROM vacs_info'
 
         results = self.db_request(sql_comm)
@@ -69,6 +81,10 @@ class DBManager:
         return results
 
     def get_vacancies_with_higher_salary(self):
+
+        """
+        Функция выдачи вакансий с зп выше средней по базе данных
+        """
 
         sql_comm = 'SELECT * FROM vacs_info ' \
                    'WHERE salary_from > (' \
@@ -80,6 +96,10 @@ class DBManager:
         return results
 
     def get_vacancies_with_keyword(self, key_word):
+
+        """
+        Функция выдачи вакансий с упоминанием ключевого слова
+        """
 
         sql_comm = f"SELECT * FROM vacs_info WHERE vac_name ILIKE '%{key_word}%';"
 

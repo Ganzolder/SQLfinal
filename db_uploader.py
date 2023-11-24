@@ -13,6 +13,11 @@ class DbUploader:
 
     @staticmethod
     def upload_data(table_name, upload_name_list):
+
+        """
+        Функция загруззки данных в базу данных
+        """
+
         conn = psycopg2.connect(
             host='localhost',
             database='HH.ru',
